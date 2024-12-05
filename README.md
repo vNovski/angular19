@@ -1,5 +1,5 @@
 # Angular19
-
+A test application that serves as an example of how to use the Resource API and Linked Signal.
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.0.
 
 ## Development server
