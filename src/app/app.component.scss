@@ -1,0 +1,31 @@
+header {
+    height: 50px;
+    padding: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+
+    svg {
+        height: 100%;
+
+        &:first-of-type {
+            padding: 0 20px;
+        }
+        
+    }
+
+    span {
+        font-size: 48px;
+    }
+}
+
+
+section {
+    width: 60%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+}

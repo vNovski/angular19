@@ -1,0 +1,36 @@
+@let activeJokeType = activeJokeType$ | async; 
+@let errorMessage = this.$errorMessage();
+
+<mat-card>
+  @if ($isJokesLoading()) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+  <mat-card-header>Joke types | old</mat-card-header>
+  <mat-card-content>
+    <mat-chip-listbox
+      class="mat-mdc-chip-set"
+      aria-label="Cutest dog breeds"
+      (change)="activeJokeType$.next($event.value)"
+    >
+      @for (type of $jokeTypes(); track type) {
+      <mat-chip-option [selected]="activeJokeType === type">{{
+        type
+      }}</mat-chip-option>
+      }
+    </mat-chip-listbox>
+    <mat-list role="list">
+      @for (joke of $availableJokes(); track joke.id) {
+      <mat-list-item role="listitem">
+        <span matListItemTitle>{{ joke.setup }}</span>
+        <span matListItemLine>{{ joke.punchline }}</span>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      } @empty {
+      <mat-list-item role="listitem">No Jokes found</mat-list-item>
+      } @if (errorMessage) {
+      <p class="error-message">{{ this.$errorMessage() }}</p>
+      }
+    </mat-list>
+    <button mat-flat-button color="secondary" (click)="reload()">Reload</button>
+  </mat-card-content>
+</mat-card>
